@@ -1,0 +1,12 @@
+services:
+  paper-rag:
+    build: .
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      # 持久化数据，重启容器后数据不丢失
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
